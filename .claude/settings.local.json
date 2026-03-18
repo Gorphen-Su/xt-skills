@@ -1,0 +1,27 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" --help 2>&1)",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" change:*)",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" help:*)",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" new:*)",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" spec:*)",
+      "Bash(python:*)",
+      "Bash(mkdir -p \"C:/Users/GorphenSu/.claude/skills/openspec-wrapper\")",
+      "Bash(mkdir -p \"C:/Users/GorphenSu/.claude/skills/openspec-wrapper/scripts\")",
+      "Bash(mkdir -p \"C:/Users/GorphenSu/.claude/skills/openspec-wrapper/references\")",
+      "Bash(mkdir -p \"C:/Users/GorphenSu/.claude/skills/openspec-wrapper/assets\")",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" list:*)",
+      "Bash(python3:*)",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/new.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-new.md\")",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/apply.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-apply.md\")",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/archive.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-archive.md\")",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/continue.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-continue.md\")",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/bulk-archive.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-bulk-archive.md\")",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/sync.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-sync.md\")",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/verify.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-verify.md\")",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/explore.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-explore.md\")"
+    ]
+  }
+}
