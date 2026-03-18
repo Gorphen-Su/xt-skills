@@ -9,4 +9,4 @@ tags: [workflow, fast-track]
 
 **当前版本**：仅转发到 `opsx:ff` 命令。
 
-详见：`.claude/commands/opsx/ff.md`
+详见：[`.claude/commands/opsx/ff.md`](./opsx/ff.md)

@@ -9,4 +9,4 @@ tags: [workflow, tasks]
 
 **当前版本**：仅转发到 `opsx:apply` 命令。
 
-详见：`.claude/commands/opsx/apply.md`
+详见：[`.claude/commands/opsx/apply.md`](./opsx/apply.md)

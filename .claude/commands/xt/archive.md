@@ -11,4 +11,4 @@ tags: [workflow, archive]
 - 在归档完成后自动执行 `scripts/archive_with_stats.py` 脚本
 - 将代码变更统计追加到 `openspec/ai.summary.csv` 文件
 
-详见：`.claude/commands/opsx/archive.md`
+详见：[`.claude/commands/opsx/archive.md`](./opsx/archive.md)

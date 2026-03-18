@@ -9,4 +9,4 @@ tags: [workflow, propose]
 
 **当前版本**：仅转发到 `opsx:propose` 命令。
 
-详见：`.claude/commands/opsx/propose.md`
+详见：[`.claude/commands/opsx/propose.md`](./opsx/propose.md)

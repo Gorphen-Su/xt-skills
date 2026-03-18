@@ -9,4 +9,4 @@ tags: [workflow, artifacts]
 
 **当前版本**：仅转发到 `opsx:continue` 命令。
 
-详见：`.claude/commands/opsx/continue.md`
+详见：[`.claude/commands/opsx/continue.md`](./opsx/continue.md)

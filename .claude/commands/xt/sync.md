@@ -9,4 +9,4 @@ tags: [workflow, sync]
 
 **当前版本**：仅转发到 `opsx:sync` 命令。
 
-详见：`.claude/commands/opsx/sync.md`
+详见：[`.claude/commands/opsx/sync.md`](./opsx/sync.md)

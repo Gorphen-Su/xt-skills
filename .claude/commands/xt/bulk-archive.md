@@ -9,4 +9,4 @@ tags: [workflow, archive]
 
 **当前版本**：仅转发到 `opsx:bulk-archive` 命令。
 
-详见：`.claude/commands/opsx/bulk-archive.md`
+详见：[`.claude/commands/opsx/bulk-archive.md`](./opsx/bulk-archive.md)

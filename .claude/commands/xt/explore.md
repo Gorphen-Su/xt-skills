@@ -9,4 +9,4 @@ tags: [workflow, explore]
 
 **当前版本**：仅转发到 `opsx:explore` 命令。
 
-详见：`.claude/commands/opsx/explore.md`
+详见：[`.claude/commands/opsx/explore.md`](./opsx/explore.md)

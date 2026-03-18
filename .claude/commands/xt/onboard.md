@@ -9,4 +9,4 @@ tags: [workflow, onboard]
 
 **当前版本**：仅转发到 `opsx:onboard` 命令。
 
-详见：`.claude/commands/opsx/onboard.md`
+详见：[`.claude/commands/opsx/onboard.md`](./opsx/onboard.md)

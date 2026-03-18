@@ -9,4 +9,4 @@ tags: [workflow, verify]
 
 **当前版本**：仅转发到 `opsx:verify` 命令。
 
-详见：`.claude/commands/opsx/verify.md`
+详见：[`.claude/commands/opsx/verify.md`](./opsx/verify.md)

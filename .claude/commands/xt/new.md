@@ -9,4 +9,4 @@ tags: [workflow, artifacts]
 
 **当前版本**：仅转发到 `opsx:new` 命令。
 
-详见：`.claude/commands/opsx/new.md`
+详见：[`.claude/commands/opsx/new.md`](./opsx/new.md)
