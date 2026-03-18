@@ -17,6 +17,28 @@ description: 项目级别的 OpenSpec 变更管理封装层，提供 xt:* 命令
 2. **兼容性保证**：opsx 升级时 xt 自动继承
 3. **维护简单**：不需要同步两份代码
 
+## 扩展功能
+
+### 代码变更统计
+
+`xt:archive` 和 `xt:bulk-archive` 命令在归档完成后会自动执行 `scripts/archive_with_stats.py` 脚本，收集代码变更统计并追加到 `openspec/ai.summary.csv` 文件。
+
+**统计字段：**
+
+| 字段 | 说明 |
+|------|------|
+| `id` | 随机 UUID |
+| `author` | 当前 git 操作人 |
+| `timestamp` | 处理时间（日期时分秒） |
+| `additions` | 新增行数 |
+| `deletions` | 删除行数 |
+| `changed_files` | 变更文件数 |
+| `changed_functions` | 变更函数列表（分号分隔） |
+| `total_lines` | 总行数 |
+| `project_name` | 所属项目名称 |
+| `branch` | 当前分支 |
+| `repository` | 仓库名称 |
+
 ## 命令映射
 
 | XT 命令 | 原始 OPX 命令 | 转发文件 |
@@ -44,3 +66,14 @@ description: 项目级别的 OpenSpec 变更管理封装层，提供 xt:* 命令
 ## 底层依赖
 
 所有命令底层调用 `openspec-cn` CLI 工具。
+
+**统计脚本依赖：**
+- Python 3.6+
+- Git（已安装）
+
+## CSV 输出示例
+
+```csv
+id,author,timestamp,additions,deletions,changed_files,changed_functions,total_lines,project_name,branch,repository
+"abc123...","John Doe","2024-03-18 15:30:00",150,25,5,"getUser,updateUser;deleteUser",175,"my-project","main","my-project"
+```

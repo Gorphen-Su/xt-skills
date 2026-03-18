@@ -21,7 +21,11 @@
       "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/bulk-archive.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-bulk-archive.md\")",
       "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/sync.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-sync.md\")",
       "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/verify.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-verify.md\")",
-      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/explore.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-explore.md\")"
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/explore.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-explore.md\")",
+      "Bash(openspec-cn new:*)",
+      "Bash(openspec-cn status:*)",
+      "Bash(openspec-cn instructions:*)",
+      "Bash(cd:*)"
     ]
   }
 }
