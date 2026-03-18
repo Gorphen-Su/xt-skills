@@ -5,8 +5,8 @@ category: 工作流
 tags: [workflow, sync]
 ---
 
-转发到 `opsx:sync` 命令。
+此命令是 `opsx:sync` 的封装层，用于项目定制。
 
-**输入**：`/xt:sync` 之后指定变更名称。
+**当前版本**：仅转发到 `opsx:sync` 命令。
 
 详见：`.claude/commands/opsx/sync.md`

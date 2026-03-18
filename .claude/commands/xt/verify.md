@@ -5,8 +5,8 @@ category: 工作流
 tags: [workflow, verify]
 ---
 
-转发到 `opsx:verify` 命令。
+此命令是 `opsx:verify` 的封装层，用于项目定制。
 
-**输入**：`/xt:verify` 之后指定变更名称。
+**当前版本**：仅转发到 `opsx:verify` 命令。
 
 详见：`.claude/commands/opsx/verify.md`

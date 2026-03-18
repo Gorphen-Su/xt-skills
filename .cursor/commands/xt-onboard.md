@@ -5,15 +5,8 @@ category: 工作流
 tags: [workflow, onboard]
 ---
 
-引导式入门 - 通过完整的 OpenSpec 工作流周期进行讲解。
+此命令是 `opsx:onboard` 的封装层，用于项目定制。
 
-**步骤**
+**当前版本**：仅转发到 `opsx:onboard` 命令。
 
-1. **介绍 OpenSpec**
-2. **演示完整流程**
-3. **实践练习**
-
-**输出**
-- 工作流概述
-- 实践指导
-- 资源链接
+详见：`.claude/commands/opsx/onboard.md`

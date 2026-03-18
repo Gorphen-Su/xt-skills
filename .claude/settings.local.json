@@ -25,7 +25,11 @@
       "Bash(openspec-cn new:*)",
       "Bash(openspec-cn status:*)",
       "Bash(openspec-cn instructions:*)",
-      "Bash(cd:*)"
+      "Bash(cd:*)",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/propose.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-propose.md\")",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/onboard.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-onboard.md\")",
+      "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/ff.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-ff.md\")",
+      "Bash(/xt:explore 测试命令转发)"
     ]
   }
 }

@@ -5,16 +5,8 @@ category: 工作流
 tags: [workflow, explore]
 ---
 
-进入探索模式，用于构思想法、调查问题和澄清需求。
+此命令是 `opsx:explore` 的封装层，用于项目定制。
 
-**输入**：`/xt:explore` 之后描述你想探索的主题。
+**当前版本**：仅转发到 `opsx:explore` 命令。
 
-**使用场景**
-- 在创建变更前构思
-- 探讨不同的设计方案
-- 澄清需求和目标
-
-**输出**
-- 构思摘要
-- 探索结果
-- 后续步骤建议
+详见：`.claude/commands/opsx/explore.md`

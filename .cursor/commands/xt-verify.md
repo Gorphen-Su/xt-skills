@@ -5,17 +5,8 @@ category: 工作流
 tags: [workflow, verify]
 ---
 
-验证实现是否与变更产出物匹配。
+此命令是 `opsx:verify` 的封装层，用于项目定制。
 
-**输入**：`/xt:verify` 之后指定变更名称。
+**当前版本**：仅转发到 `opsx:verify` 命令。
 
-**步骤**
-
-1. **检查产出物状态**
-2. **验证实现**
-3. **报告结果**
-
-**输出**
-- 通过/未通过
-- 问题列表
-- 修复建议
+详见：`.claude/commands/opsx/verify.md`

@@ -5,8 +5,8 @@ category: 工作流
 tags: [workflow, explore]
 ---
 
-转发到 `opsx:explore` 命令。
+此命令是 `opsx:explore` 的封装层，用于项目定制。
 
-**输入**：`/xt:explore` 之后描述你想探索的主题。
+**当前版本**：仅转发到 `opsx:explore` 命令。
 
 详见：`.claude/commands/opsx/explore.md`

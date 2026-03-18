@@ -5,8 +5,8 @@ category: 工作流
 tags: [workflow, propose]
 ---
 
-转发到 `opsx:propose` 命令。
+此命令是 `opsx:propose` 的封装层，用于项目定制。
 
-**输入**：`/xt:propose` 之后描述你想要构建的内容。
+**当前版本**：仅转发到 `opsx:propose` 命令。
 
 详见：`.claude/commands/opsx/propose.md`

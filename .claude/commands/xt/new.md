@@ -5,8 +5,8 @@ category: 工作流
 tags: [workflow, artifacts]
 ---
 
-转发到 `opsx:new` 命令。
+此命令是 `opsx:new` 的封装层，用于项目定制。
 
-**输入**：`/xt:new` 之后的参数是变更名称（kebab-case），或用户想要构建内容的描述。
+**当前版本**：仅转发到 `opsx:new` 命令。
 
 详见：`.claude/commands/opsx/new.md`
