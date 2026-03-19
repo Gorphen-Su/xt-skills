@@ -1,13 +1,16 @@
 {
   "name": "@xt-skills/openspec-wrapper-init",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "OpenSpec 变更管理工具的 xt 封装层初始化脚本",
   "main": "bin/xt-openspec-wrapper-init.js",
   "bin": {
     "xt-openspec-wrapper-init": "bin/xt-openspec-wrapper-init.js"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
-    "postinstall": "cd ../.. && node ./init-cli/xt-openspec-wrapper-init/bin/xt-openspec-wrapper-init.js"
+    "postinstall": "node ./bin/xt-openspec-wrapper-init.js"
   },
   "engines": {
     "node": ">=14.0.0"
@@ -20,13 +23,5 @@
     "cli"
   ],
   "author": "Gorphen Su",
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/your-org/xt-skills.git"
-  },
-  "bugs": {
-    "url": "https://github.com/your-org/xt-skills/issues"
-  },
-  "homepage": "https://github.com/your-org/xt-skills#readme"
+  "license": "MIT"
 }
