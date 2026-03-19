@@ -32,10 +32,6 @@ def get_git_root():
     stdout, _ = run_cmd(["git", "rev-parse", "--show-toplevel"])
     return stdout if stdout else os.getcwd()
 
-def get_current_branch():
-    """获取当前分支名"""
-    stdout, _ = run_cmd(["git", "rev-parse", "--abbrev-ref", "HEAD"])
-    return stdout if stdout else "unknown"
 
 def get_author():
     """获取当前 git 用户名"""
@@ -117,7 +113,6 @@ def collect_stats():
 
     author = get_author()
     project_name = get_project_name(repo_root)
-    branch = get_current_branch()
     changed_files = get_changed_files()
 
     total_additions = 0
@@ -143,9 +138,7 @@ def collect_stats():
         "changed_files": len(changed_files),
         "changed_functions": ";".join(changed_functions),
         "total_lines": total_lines,
-        "project_name": project_name,
-        "branch": branch,
-        "repository": os.path.basename(repo_root)
+        "project_name": project_name
     }
 
 def ensure_csv_exists(csv_path):
@@ -156,7 +149,7 @@ def ensure_csv_exists(csv_path):
             writer.writerow([
                 "id", "author", "timestamp", "additions", "deletions",
                 "changed_files", "changed_functions", "total_lines",
-                "project_name", "branch", "repository"
+                "project_name"
             ])
         print(f"已创建 CSV 文件: {csv_path}")
 
@@ -173,9 +166,7 @@ def append_to_csv(csv_path, stats):
             stats["changed_files"],
             stats["changed_functions"],
             stats["total_lines"],
-            stats["project_name"],
-            stats["branch"],
-            stats["repository"]
+            stats["project_name"]
         ])
     print(f"已追加记录到: {csv_path}")
 
