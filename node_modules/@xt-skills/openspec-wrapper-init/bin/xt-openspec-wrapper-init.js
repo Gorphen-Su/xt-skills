@@ -111,30 +111,30 @@ function runInit(command, args, displayName) {
  * 检查和安装依赖
  * - 检查 openspec 和 openspec-cn 是否安装
  * - 如未安装则自动安装
- * - 如已安装则运行初始化
+ * - 无论是否刚安装，都运行初始化
  */
 function checkAndInstallDependencies() {
   console.log('正在检查依赖...');
 
-  // 检查 openspec
-  const openspecInstalled = checkCommandInstalled('openspec');
-  if (!openspecInstalled) {
+  // 检查并确保 openspec 安装且初始化
+  if (!checkCommandInstalled('openspec')) {
     console.log('   未检测到 openspec，正在安装...');
     installGlobal('@fission-ai/openspec@latest', 'openspec');
   } else {
     console.log('   ✓ openspec 已安装');
-    runInit('openspec init --tools claude,cursor', '', 'openspec');
   }
+  // 无论是否刚安装，都运行初始化
+  runInit('openspec init --tools claude,cursor', '', 'openspec');
 
-  // 检查 openspec-cn
-  const openspecCnInstalled = checkCommandInstalled('openspec-cn');
-  if (!openspecCnInstalled) {
+  // 检查并确保 openspec-cn 安装且初始化
+  if (!checkCommandInstalled('openspec-cn')) {
     console.log('   未检测到 openspec-cn，正在安装...');
     installGlobal('@studyzy/openspec-cn@latest', 'openspec-cn');
   } else {
     console.log('   ✓ openspec-cn 已安装');
-    runInit('openspec-cn init --tools claude,cursor', '', 'openspec-cn');
   }
+  // 无论是否刚安装，都运行初始化
+  runInit('openspec-cn init --tools claude,cursor', '', 'openspec-cn');
 }
 
 function main() {
