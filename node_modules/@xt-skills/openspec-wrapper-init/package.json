@@ -1,6 +1,6 @@
 {
   "name": "@xt-skills/openspec-wrapper-init",
-  "version": "1.0.2",
+  "version": "1.0.10",
   "description": "OpenSpec 变更管理工具的 xt 封装层初始化脚本",
   "main": "bin/xt-openspec-wrapper-init.js",
   "bin": {
@@ -10,7 +10,8 @@
     "access": "public"
   },
   "scripts": {
-    "postinstall": "node ./bin/xt-openspec-wrapper-init.js"
+    "postinstall": "cd ../../../ && xt-openspec-wrapper-init",
+    "public": "npm version patch && npm publish --access public"
   },
   "engines": {
     "node": ">=14.0.0"
