@@ -29,7 +29,18 @@
       "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/propose.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-propose.md\")",
       "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/onboard.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-onboard.md\")",
       "Bash(cp \"D:/workspaces/private-workspaces/xt-skills/.claude/commands/xt/ff.md\" \"D:/workspaces/private-workspaces/xt-skills/.cursor/commands/xt-ff.md\")",
-      "Bash(/xt:explore 测试命令转发)"
+      "Bash(/xt:explore 测试命令转发)",
+      "Bash(cd /d D:workspacesprivate-workspacesxt-skills)",
+      "Bash(npx openspec-cn:*)",
+      "Bash(dir \"D:\\\\workspaces\\\\private-workspaces\\\\xt-skills\\\\openspec\\\\specs\")",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" show:*)",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" change:archive simplify-git-stats-logic)",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" help:archive)",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" archive:*)",
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\")"
+    ],
+    "deny": [
+      "Bash(git commit*)"
     ]
   }
 }
