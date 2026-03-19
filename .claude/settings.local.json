@@ -42,7 +42,14 @@
       "Bash(do cp:*)",
       "Bash(done)",
       "Bash(npm link:*)",
-      "Bash(xt-openspec-wrapper-init)"
+      "Bash(xt-openspec-wrapper-init)",
+      "Bash(npm remove:*)",
+      "Bash(node -e \"console.log\\(''cwd:'', process.cwd\\(\\)\\); console.log\\(''__dirname:'', __dirname\\);\")",
+      "Bash(node -e \"console.log\\(''dirname of cwd:'', require\\(''path''\\).dirname\\(require.resolve\\(''./package.json''\\)\\)\\);\")",
+      "Bash(npm cache:*)",
+      "Bash(node node_modules/@xt-skills/openspec-wrapper-init/bin/xt-openspec-wrapper-init.js)",
+      "Bash(openspec --version)",
+      "Bash(openspec-cn --version)"
     ],
     "deny": [
       "Bash(git commit*)"

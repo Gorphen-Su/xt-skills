@@ -1,0 +1,5 @@
+{
+  "devDependencies": {
+    "@xt-skills/openspec-wrapper-init": "file:init-cli/xt-openspec-wrapper-init"
+  }
+}
