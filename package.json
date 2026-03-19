@@ -1,5 +1,14 @@
 {
   "devDependencies": {
-    "@xt-skills/openspec-wrapper-init": "file:init-cli/xt-openspec-wrapper-init"
+    "@xt-skills/openspec-wrapper-init": "file:init-cli/xt-openspec-wrapper-init",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.0",
+    "typescript": "^5.3.3"
+  },
+  "scripts": {
+    "test": "jest",
+    "test:unit": "jest --testPathPattern=tests/unit",
+    "test:integration": "jest --testPathPattern=tests/integration",
+    "test:coverage": "jest --coverage"
   }
 }
