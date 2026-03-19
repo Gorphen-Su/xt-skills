@@ -155,3 +155,9 @@ tags: [workflow, archive, experimental]
 - 显示清晰的操作摘要
 - 如果请求同步，使用 Skill tool 调用 `openspec-sync-specs`（代理驱动）
 - 如果存在增量规格说明，请始终运行同步评估，并在提示前显示综合摘要
+
+**重要规则**：
+- ✅ 归档是文件系统操作（移动目录）
+- ✅ 可以使用 `git add` 暂存变更
+- ❌ **禁止主动执行 `git commit`**
+- ❌ **禁止自动提交到远程仓库**

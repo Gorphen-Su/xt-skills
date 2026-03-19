@@ -9,4 +9,12 @@ tags: [workflow, tasks]
 
 **当前版本**：仅转发到 `opsx:apply` 命令。
 
+**重要规则**：
+- ✅ 可以修改代码文件
+- ✅ 可以使用 `git add` 暂存文件
+- ❌ **禁止主动执行 `git commit`**
+- ❌ **禁止自动提交到远程仓库**
+
+所有 git 提交操作必须等待用户明确授权。
+
 详见：[`.claude/commands/opsx/apply.md`](./opsx/apply.md)
