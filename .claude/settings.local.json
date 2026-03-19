@@ -37,7 +37,12 @@
       "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" change:archive simplify-git-stats-logic)",
       "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" help:archive)",
       "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\" archive:*)",
-      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\")"
+      "Bash(\"C:/Users/GorphenSu/AppData/Local/Volta/bin/openspec\")",
+      "Bash(for f:*)",
+      "Bash(do cp:*)",
+      "Bash(done)",
+      "Bash(npm link:*)",
+      "Bash(xt-openspec-wrapper-init)"
     ],
     "deny": [
       "Bash(git commit*)"
