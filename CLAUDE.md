@@ -6,6 +6,27 @@
 
 ## 重要规则
 
+### OpenSpec 增强功能
+
+项目提供 OpenSpec 增强功能，需要主动初始化：
+
+**初始化命令**：`/xt-openspec-enhance:init`
+
+执行后将启用以下增强：
+
+**Git 状态检查**（创建变更前）：
+- `/opsx:new`
+- `/opsx:propose`
+- `/opsx:ff`
+
+**归档增强**（归档成功后）：
+- `/opsx:archive` - 代码变更统计 + Commit 提示
+- `/opsx:bulk-archive` - 代码变更统计 + Commit 提示
+
+**恢复原始状态**：`/xt-openspec-enhance:restore`
+
+**注意**：opsx 升级后可能覆盖修改，需重新执行 init 命令。
+
 ### Git 提交规则 - 严格禁止
 
 ** Claude AI 助手禁止以下行为：**

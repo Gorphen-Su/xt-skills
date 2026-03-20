@@ -50,7 +50,8 @@
       "Bash(node node_modules/@xt-skills/openspec-wrapper-init/bin/xt-openspec-wrapper-init.js)",
       "Bash(openspec --version)",
       "Bash(openspec-cn --version)",
-      "Bash(openspec/ai.summary.csv:*)"
+      "Bash(openspec/ai.summary.csv:*)",
+      "WebFetch(domain:docs.anthropic.com)"
     ],
     "deny": [
       "Bash(git commit*)"
