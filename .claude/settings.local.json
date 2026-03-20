@@ -49,7 +49,8 @@
       "Bash(npm cache:*)",
       "Bash(node node_modules/@xt-skills/openspec-wrapper-init/bin/xt-openspec-wrapper-init.js)",
       "Bash(openspec --version)",
-      "Bash(openspec-cn --version)"
+      "Bash(openspec-cn --version)",
+      "Bash(openspec/ai.summary.csv:*)"
     ],
     "deny": [
       "Bash(git commit*)"

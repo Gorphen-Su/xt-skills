@@ -1,14 +1,51 @@
 #!/usr/bin/env python3
+# -*- coding: utf-8 -*-
 """
 检查并等待 Git 状态干净
 
 用于在启动 OpenSpec 变更前确保工作区处于提交状态
 """
 
+import subprocess
 import sys
 import os
+import io
 
-from .git_utils import run_cmd, get_git_root, get_git_status
+# 设置 stdout 编码为 UTF-8，解决 Windows 控制台编码问题
+sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8', errors='replace')
+
+
+# ============ Git 工具函数 ============
+
+def run_cmd(cmd, shell=False):
+    """跨平台运行命令"""
+    try:
+        result = subprocess.run(
+            cmd,
+            shell=shell,
+            capture_output=True,
+            text=True,
+            encoding='utf-8',
+            errors='replace'
+        )
+        return result.stdout.strip(), result.returncode
+    except Exception as e:
+        return "", 1
+
+
+def get_git_root():
+    """获取 git 仓库根目录"""
+    stdout, _ = run_cmd(["git", "rev-parse", "--show-toplevel"])
+    return stdout if stdout else os.getcwd()
+
+
+def get_git_status():
+    """获取 git status 输出"""
+    stdout, _ = run_cmd(["git", "status"])
+    return stdout
+
+
+# ============ 检查逻辑 ============
 
 
 def is_git_clean():
