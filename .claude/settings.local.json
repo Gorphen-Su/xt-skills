@@ -51,7 +51,13 @@
       "Bash(openspec --version)",
       "Bash(openspec-cn --version)",
       "Bash(openspec/ai.summary.csv:*)",
-      "WebFetch(domain:docs.anthropic.com)"
+      "WebFetch(domain:docs.anthropic.com)",
+      "Bash(ccusage session:*)",
+      "Bash(ccusage:*)",
+      "Bash(cp .claude/skills/xt-openspec-enhance/scripts/archive_with_stats.py .claude/skills/xt-openspec-wrapper/scripts/)",
+      "Bash(cp .claude/skills/xt-openspec-enhance/scripts/archive_with_stats.py init-cli/xt-openspec-wrapper-init/lib/scripts/)",
+      "Bash(openspec-cn list:*)",
+      "Bash(pip install:*)"
     ],
     "deny": [
       "Bash(git commit*)"

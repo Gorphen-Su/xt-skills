@@ -10,6 +10,7 @@ import json
 import sys
 import os
 import csv
+import yaml
 from datetime import datetime
 import uuid
 
@@ -154,8 +155,47 @@ def prompt_install_ccusage():
         return False
 
 
-def get_token_stats(repo_root):
-    """获取当前项目的 token 消耗统计"""
+def read_baseline_tokens(change_dir):
+    """从 .openspec.yaml 读取基准 token"""
+    yaml_path = os.path.join(change_dir, ".openspec.yaml")
+    if not os.path.exists(yaml_path):
+        return None
+
+    try:
+        with open(yaml_path, 'r', encoding='utf-8') as f:
+            data = yaml.safe_load(f) or {}
+            return data.get("baseline_tokens")
+    except Exception as e:
+        print(f"警告: 读取基准 token 失败: {e}")
+        return None
+
+
+def calculate_token_diff(current, baseline):
+    """计算 token 差值"""
+    if not baseline:
+        return current
+
+    return {
+        "input_tokens": current.get("input_tokens", 0) - baseline.get("input", 0),
+        "output_tokens": current.get("output_tokens", 0) - baseline.get("output", 0),
+        "cache_create_tokens": current.get("cache_create_tokens", 0) - baseline.get("cache_create", 0),
+        "cache_read_tokens": current.get("cache_read_tokens", 0) - baseline.get("cache_read", 0),
+        "total_tokens": current.get("total_tokens", 0) - baseline.get("total", 0),
+        "cost": current.get("cost", 0),
+        "models": current.get("models", "")
+    }
+
+
+def get_token_stats(repo_root, change_dir=None):
+    """获取当前项目的 token 消耗统计
+
+    Args:
+        repo_root: Git 仓库根目录
+        change_dir: 变更目录路径（用于读取基准 token）
+
+    Returns:
+        dict: token 统计数据（差值或当前值）
+    """
     # 检查 ccusage 是否已安装
     if not check_ccusage_installed():
         if prompt_install_ccusage():
@@ -209,7 +249,7 @@ def get_token_stats(repo_root):
         cost = matched_session.get("totalCost", 0)
         models = ",".join(matched_session.get("modelsUsed", []))
 
-        return {
+        current_tokens = {
             "input_tokens": input_tokens,
             "output_tokens": output_tokens,
             "cache_create_tokens": cache_create_tokens,
@@ -218,6 +258,21 @@ def get_token_stats(repo_root):
             "cost": round(cost, 4),
             "models": models
         }
+
+        # 读取基准 token 并计算差值
+        baseline = None
+        if change_dir:
+            baseline = read_baseline_tokens(change_dir)
+
+        if baseline:
+            # 计算差值
+            diff_tokens = calculate_token_diff(current_tokens, baseline)
+            print(f"Token 差值计算: 总计 {diff_tokens['total_tokens']:,} (当前 {current_tokens['total_tokens']:,} - 基准 {baseline.get('total', 0):,})")
+            return diff_tokens
+        else:
+            # 无基准，使用当前值并打印警告
+            print("警告: 无基准 token，使用累计值（变更可能在新功能实现前创建）")
+            return current_tokens
 
     except json.JSONDecodeError as e:
         print(f"警告: 解析 ccusage JSON 失败: {e}")
@@ -236,8 +291,12 @@ CSV_HEADERS = ["id", "author", "timestamp", "additions", "deletions", "total_lin
                "total_tokens", "cost", "models", "spec_files", "spec_lines"]
 
 
-def collect_stats():
-    """收集代码变更统计"""
+def collect_stats(change_dir=None):
+    """收集代码变更统计
+
+    Args:
+        change_dir: 归档的变更目录路径（用于读取基准 token）
+    """
     repo_root = get_git_root()
     os.chdir(repo_root)
 
@@ -273,8 +332,8 @@ def collect_stats():
         "project_name": project_name
     }
 
-    # 获取 token 统计
-    token_stats = get_token_stats(repo_root)
+    # 获取 token 统计（传入变更目录以读取基准）
+    token_stats = get_token_stats(repo_root, change_dir)
     if token_stats:
         stats.update(token_stats)
     else:
@@ -363,6 +422,33 @@ def append_to_csv(csv_path, stats):
     print(f"已追加记录到: {csv_path}")
 
 
+def find_recent_archived_change(repo_root):
+    """找到最近归档的变更目录
+
+    Returns:
+        str: 最近归档的变更目录路径，如果没有则返回 None
+    """
+    archive_dir = os.path.join(repo_root, "openspec", "changes", "archive")
+    if not os.path.exists(archive_dir):
+        return None
+
+    # 获取所有归档目录
+    archived_changes = []
+    for name in os.listdir(archive_dir):
+        change_path = os.path.join(archive_dir, name)
+        if os.path.isdir(change_path):
+            # 获取修改时间
+            mtime = os.path.getmtime(change_path)
+            archived_changes.append((change_path, mtime))
+
+    if not archived_changes:
+        return None
+
+    # 按修改时间排序，返回最新的
+    archived_changes.sort(key=lambda x: x[1], reverse=True)
+    return archived_changes[0][0]
+
+
 def main():
     repo_root = get_git_root()
     openspec_dir = os.path.join(repo_root, "openspec")
@@ -378,8 +464,13 @@ def main():
     # 迁移旧 CSV 格式
     migrate_csv_headers(csv_path)
 
+    # 查找最近归档的变更目录（用于读取基准 token）
+    change_dir = find_recent_archived_change(repo_root)
+    if change_dir:
+        print(f"检测到归档变更: {os.path.basename(change_dir)}")
+
     # 收集统计信息
-    stats = collect_stats()
+    stats = collect_stats(change_dir)
 
     if "error" in stats:
         print(f"错误: {stats['error']}")

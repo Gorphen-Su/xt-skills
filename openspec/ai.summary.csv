@@ -1,4 +1,9 @@
-id,author,timestamp,additions,deletions,total_lines,project_name
-7a161335-8e43-44b9-9bd2-fc6ce112f610,Gorphen Su,2026-03-19 09:29:37,7,13,20,xt-skills
-80f15553-b371-45ba-a15e-54670598af0a,Gorphen Su,2026-03-19 10:17:02,12,99,111,xt-skills
-e0ea9793-9f49-41b7-a66c-26607c73fda5,Gorphen Su,2026-03-20 16:27:32,84,5,89,xt-skills
+id,author,timestamp,additions,deletions,total_lines,project_name,input_tokens,output_tokens,cache_create_tokens,cache_read_tokens,total_tokens,cost,models,spec_files,spec_lines
+7a161335-8e43-44b9-9bd2-fc6ce112f610,Gorphen Su,2026-03-19 09:29:37,7,13,20,xt-skills,,,,,,,,,
+80f15553-b371-45ba-a15e-54670598af0a,Gorphen Su,2026-03-19 10:17:02,12,99,111,xt-skills,,,,,,,,,
+e0ea9793-9f49-41b7-a66c-26607c73fda5,Gorphen Su,2026-03-20 16:27:32,84,5,89,xt-skills,,,,,,,,,
+6f046de8-beec-4ee5-be06-d841b784936c,Gorphen Su,2026-03-23 10:38:04,363,8,371,xt-skills,76078110,170335,0,2654479,78902924,50.6219,"qwen3-coder-next,glm-5",,
+939414aa-0c6f-4094-b55b-50a0d1513371,Gorphen Su,2026-03-23 10:47:10,804,119,923,xt-skills,78915349,172345,0,2911229,81998923,52.8969,"qwen3-coder-next,glm-5",,
+0ce0901d-5615-42f4-a30a-7e82afd5e603,Gorphen Su,2026-03-23 11:06:04,995,119,1114,xt-skills,83865926,178343,0,3230369,87274638,0,"qwen3-coder-next,glm-5",30,817
+eebc2533-6f21-4085-a676-376fa92e0d3b,Gorphen Su,2026-03-23 11:14:56,994,119,1113,xt-skills,87096517,180867,0,3425810,90703194,0,"qwen3-coder-next,glm-5",31,850
+f7f032e7-350c-4b6a-9354-e83352032673,Gorphen Su,2026-03-23 15:16:19,1496,156,1652,xt-skills,99116012,213030,0,4287894,103616936,69.1616,"qwen3-coder-next,glm-5",37,1060

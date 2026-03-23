@@ -82,6 +82,45 @@ M   src/app.ts
 请先处理后点击确认或者输入 '继续' 确认
 ```
 
+## Token 基准记录
+
+### 启用方式
+
+通过 `/xt-openspec-enhance:init` 命令注入到 opsx 创建变更命令中。
+
+### 记录时机
+
+当用户执行以下命令创建变更后，**自动记录基准**：
+- `/opsx:new` - 启动新变更
+- `/opsx:propose` - 快速提案
+
+### 记录流程
+
+```bash
+python .claude/skills/xt-openspec-enhance/scripts/record_baseline.py "<change-name>"
+```
+
+脚本自动完成：
+1. 获取当前 session 的 token 消耗
+2. 写入 `.openspec.yaml` 的 `baseline_tokens` 字段
+3. 归档时计算差值，得到实际 token 消耗
+
+### 基准字段格式
+
+```yaml
+baseline_tokens:
+  input: 12345
+  output: 6789
+  cache_create: 100
+  cache_read: 200
+  total: 19434
+```
+
+### 注意事项
+
+- 如果 ccusage 未安装，将跳过基准记录并打印警告
+- 归档时若无基准，使用当前累计值并打印警告
+
 ## 代码变更统计
 
 ### 启用方式
@@ -101,9 +140,12 @@ python .claude/skills/xt-openspec-enhance/scripts/archive_with_stats.py
 ```
 
 脚本自动完成：
-1. 计算自上次提交以来的代码变更
-2. 追加记录到 `openspec/ai.summary.csv`
-3. 输出统计摘要
+1. 查找最近归档的变更目录
+2. 读取 `.openspec.yaml` 中的基准 token
+3. 计算当前 token 与基准的差值
+4. 计算自上次提交以来的代码变更
+5. 追加记录到 `openspec/ai.summary.csv`
+6. 输出统计摘要
 
 ### CSV 字段
 
@@ -116,12 +158,21 @@ python .claude/skills/xt-openspec-enhance/scripts/archive_with_stats.py
 | `deletions` | 删除行数 |
 | `total_lines` | 总变更行数（additions + deletions） |
 | `project_name` | 项目名称 |
+| `input_tokens` | 输入 token 数（差值） |
+| `output_tokens` | 输出 token 数（差值） |
+| `cache_create_tokens` | 缓存创建 token 数（差值） |
+| `cache_read_tokens` | 缓存读取 token 数（差值） |
+| `total_tokens` | 总 token 数（差值） |
+| `cost` | 成本（美元） |
+| `models` | 使用的模型列表 |
+| `spec_files` | 规范文件数量 |
+| `spec_lines` | 规范文件总行数 |
 
 ### CSV 输出示例
 
 ```csv
-id,author,timestamp,additions,deletions,total_lines,project_name
-"abc123...","John Doe","2024-03-18 15:30:00",150,25,175,"my-project"
+id,author,timestamp,additions,deletions,total_lines,project_name,input_tokens,output_tokens,cache_create_tokens,cache_read_tokens,total_tokens,cost,models,spec_files,spec_lines
+"abc123...","John Doe","2024-03-18 15:30:00",150,25,175,"my-project",50000,12000,100,200,62300,1.25,"claude-sonnet-4-6",5,320
 ```
 
 ## 命令映射（原始逻辑）
@@ -222,6 +273,7 @@ add-user-auth: 添加用户认证功能
         └── scripts/
             ├── git_utils.py     # 共享工具函数
             ├── check_git_status.py  # Git 状态检查脚本
+            ├── record_baseline.py   # Token 基准记录脚本
             ├── archive_with_stats.py # CSV 统计脚本
             └── commit_after_archive.py # 归档后 Commit 提示脚本
 ```

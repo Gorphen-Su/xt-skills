@@ -1,6 +1,6 @@
 ---
 name: "XT: OpenSpec 增强初始化"
-description: 初始化 OpenSpec 增强功能，为 opsx 命令添加 Git 状态检查和归档增强
+description: 初始化 OpenSpec 增强功能，为 opsx 命令添加 Git 状态检查、Token 基准记录和归档增强
 category: 工具
 tags: [setup, git, enhance]
 ---
@@ -19,12 +19,19 @@ tags: [setup, git, enhance]
 | `/opsx:propose` | 创建变更前 |
 | `/opsx:ff` | 创建变更前 |
 
-### 2. 归档增强（归档成功后）
+### 2. Token 基准记录（变更创建后）
+
+| 命令 | 记录时机 |
+|------|----------|
+| `/opsx:new` | 创建变更目录后 |
+| `/opsx:propose` | 创建变更目录后 |
+
+### 3. 归档增强（归档成功后）
 
 | 命令 | 增强内容 |
 |------|----------|
-| `/opsx:archive` | 代码变更统计 + Commit 提示 |
-| `/opsx:bulk-archive` | 代码变更统计 + Commit 提示 |
+| `/opsx:archive` | 代码变更统计 + Token 差值计算 + Commit 提示 |
+| `/opsx:bulk-archive` | 代码变更统计 + Token 差值计算 + Commit 提示 |
 
 ## 步骤
 
@@ -58,7 +65,33 @@ tags: [setup, git, enhance]
 
    ```
 
-3. **注入归档增强代码（归档命令）**
+3. **注入 Token 基准记录代码（创建变更命令）**
+
+   在以下文件的步骤 3 "创建变更目录" 后，插入基准记录代码：
+
+   - `.claude/commands/opsx/new.md`
+   - `.claude/commands/opsx/propose.md`
+
+   **注入内容**（在 `openspec-cn new change` 命令后添加）：
+   ```markdown
+
+   3.1 **记录 Token 基准**
+
+      运行基准记录脚本：
+      ```bash
+      python .claude/skills/xt-openspec-enhance/scripts/record_baseline.py "<name>"
+      ```
+
+      脚本自动完成：
+      - 获取当前 session 的 token 消耗
+      - 写入 `.openspec.yaml` 的 `baseline_tokens` 字段
+      - 后续归档时计算差值，得到实际 token 消耗
+
+      **注意**：如果 ccusage 未安装，将跳过基准记录并打印警告。
+
+   ```
+
+4. **注入归档增强代码（归档命令）**
 
    在以下文件的 `**防护措施**` 前添加新步骤：
 
@@ -77,6 +110,7 @@ tags: [setup, git, enhance]
 
       脚本自动完成：
       - 计算自上次提交以来的代码变更
+      - 读取变更目录的基准 token，计算差值
       - 追加记录到 `openspec/ai.summary.csv`
       - 输出统计摘要
 
@@ -92,6 +126,11 @@ tags: [setup, git, enhance]
       - 删除行数：<deletions>
       - 变更文件：<changed_files>
 
+      **Token 消耗**：
+      - 输入：<input_tokens>
+      - 输出：<output_tokens>
+      - 总计：<total_tokens>
+
       是否执行 git commit 提交本次变更？
       输入 '是' 或 '提交' 确认，或其他内容跳过
       ```
@@ -101,11 +140,11 @@ tags: [setup, git, enhance]
 
    ```
 
-4. **更新步骤编号**
+5. **更新步骤编号**
 
    将原命令中的后续步骤编号顺延。
 
-5. **显示完成信息**
+6. **显示完成信息**
 
    ```
    ## 初始化完成
@@ -116,6 +155,10 @@ tags: [setup, git, enhance]
    - /opsx:new
    - /opsx:propose
    - /opsx:ff
+
+   **Token 基准记录**：
+   - /opsx:new
+   - /opsx:propose
 
    **归档增强**：
    - /opsx:archive
@@ -130,3 +173,4 @@ tags: [setup, git, enhance]
 
 - opsx 升级后可能覆盖修改，需要重新运行此命令
 - 建议在每次 opsx 升级后检查增强功能是否生效
+- Token 基准记录依赖 ccusage 工具，请确保已安装

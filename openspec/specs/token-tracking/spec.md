@@ -4,6 +4,21 @@
 
 在归档变更时，系统必须调用 `ccusage` 工具获取当前项目 session 的 token 消耗统计。
 
+**原有行为**: 获取 session 累计 token 值并直接记录
+
+**新增行为**:
+1. 检查 `.openspec.yaml` 中是否存在 `baseline_tokens`
+2. 如果存在，计算差值并记录
+3. 如果不存在，使用当前值并打印警告
+
+#### 场景:成功获取 token 数据（有基准）
+- **当** `ccusage` 已安装且当前 session 有数据，且存在 `baseline_tokens`
+- **那么** 系统计算 token 差值（当前 - 基准），记录差值到 CSV
+
+#### 场景:成功获取 token 数据（无基准）
+- **当** `ccusage` 已安装且当前 session 有数据，但无 `baseline_tokens`
+- **那么** 系统使用当前 token 值，打印"警告: 无基准 token，使用累计值"
+
 #### 场景:成功获取 token 数据
 - **当** `ccusage` 已安装且当前 session 有数据
 - **那么** 系统获取 input_tokens、output_tokens、cache_create_tokens、cache_read_tokens、total_tokens、cost 和 models 字段
